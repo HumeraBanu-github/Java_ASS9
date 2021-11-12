@@ -55,12 +55,19 @@ public class Mains {
                 .map(News::getNewsid)
                 .ifPresent(System.out::println);
 
-        //5.question
-        list1.stream()
+       /5.question
+        System.out.println("5.Counting the number of times the budget is present");
+       int count = (int) list1.stream()
                 .filter(x-> x.getCommentByUser().contains("budget"))
-                .collect(Collectors.counting());
+                        .count();
+        System.out.println(count);
 
         //6.question
+        System.out.println("6.Printing max Comment by user");
+        Optional<String> max = list1.stream()
+                .map(News::getCommentByUser)
+                        .max((i,j)->i.compareTo(j));
+        System.out.println(max.get());
         //7.question
         System.out.println("7.print get comment by user");
             list1.stream()
